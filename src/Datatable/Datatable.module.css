@@ -3,4 +3,9 @@
   background: #0000;
   width: 90%;
   margin: 20px auto;
+  color: teal;
+}
+.tbody{
+  text-align: center;
+  color: black;
 }

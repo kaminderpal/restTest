@@ -1,7 +1,16 @@
 import React from 'react';
 import styles from './Datatable.module.css';
+import useFetch from '../Utils/useFetch';
+import Row from './Row';
 
 const Datatable = ({ total }) => {
+  const { data, getData } = useFetch({
+    result: null,
+    isLoading: false,
+    error: false,
+    page: 1,
+  });
+
   return (
     <table className={styles.table}>
       <thead>
@@ -12,31 +21,17 @@ const Datatable = ({ total }) => {
           <th>{`$${total}`}</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>Hello</td>
-          <td>sam</td>
-          <td>wool</td>
-          <td>25</td>
-        </tr>
-        <tr>
-          <td>Hello</td>
-          <td>sam</td>
-          <td>wool</td>
-          <td>25</td>
-        </tr>
-        <tr>
-          <td>Hello</td>
-          <td>sam</td>
-          <td>wool</td>
-          <td>25</td>
-        </tr>
-        <tr>
-          <td>Hello</td>
-          <td>sam</td>
-          <td>wool</td>
-          <td>25</td>
-        </tr>
+      <tbody className={styles.tbody}>
+        {data.result &&
+          data.result.transactions.map((transaction, i) => (
+            <Row
+              key={i}
+              date={transaction.Date}
+              amount={transaction.Amount}
+              account={transaction.Ledger}
+              company={transaction.Company}
+            />
+          ))}
       </tbody>
     </table>
   );
