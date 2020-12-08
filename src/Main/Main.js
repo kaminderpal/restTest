@@ -1,7 +1,12 @@
 import React from 'react';
+import Datatable from '../Datatable';
 
 const Main = () => {
-  return <div></div>;
+  return (
+    <div>
+      <Datatable total={100} />
+    </div>
+  );
 };
 
 export default Main;
