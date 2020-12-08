@@ -4,8 +4,17 @@
   width: 90%;
   margin: 20px auto;
   color: teal;
+  font-size: 20px;
+  text-align: left;
+  border-collapse: collapse;
+}
+.table th, .table td{
+  text-align: left;
+  padding: 10px;
+
 }
 .tbody{
-  text-align: center;
+  text-align: left;
   color: black;
+  font-size: 16px;
 }
