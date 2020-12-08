@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Datatable.module.css';
 import useFetch from '../Utils/useFetch';
 import Row from './Row';
-import { getDate } from '../Utils/helpers';
+import { getDate, getTotalAmount } from '../Utils/helpers';
 
 const Datatable = ({ total }) => {
   const { data, getData } = useFetch({
@@ -11,15 +11,20 @@ const Datatable = ({ total }) => {
     error: false,
     page: 1,
   });
-
+  if (data.isLoading) return 'Transactions are loading...';
+  if (data.error) return 'Error Occurred while loading the transactions';
   return (
     <table className={styles.table}>
       <thead>
         <tr>
-          <th>Data</th>
+          <th>Date</th>
           <th>Company</th>
           <th>Account</th>
-          <th>{`$${total}`}</th>
+          <th>{`$${
+            data.result && data.result.transactions
+              ? getTotalAmount(data.result.transactions)
+              : 'Value'
+          }`}</th>
         </tr>
       </thead>
       <tbody className={styles.tbody}>
