@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './Datatable.module.css';
 import useFetch from '../Utils/useFetch';
 import Row from './Row';
+import { getDate } from '../Utils/helpers';
 
 const Datatable = ({ total }) => {
   const { data, getData } = useFetch({
@@ -26,7 +27,7 @@ const Datatable = ({ total }) => {
           data.result.transactions.map((transaction, i) => (
             <Row
               key={i}
-              date={transaction.Date}
+              date={getDate(transaction.Date)}
               amount={transaction.Amount}
               account={transaction.Ledger}
               company={transaction.Company}
