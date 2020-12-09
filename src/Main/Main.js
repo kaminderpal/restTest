@@ -30,7 +30,7 @@ const Main = () => {
   }, [data.result, data.page]);
 
   /**
-   * Effect that will set the transactions.
+   * Effect that will set up the transactions in the array.
    */
   useEffect(() => {
     if (data.result) {
