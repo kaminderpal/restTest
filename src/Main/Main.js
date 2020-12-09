@@ -5,7 +5,7 @@ import styles from './Main.module.css';
 const Main = () => {
   return (
     <div className={styles.main}>
-      <Datatable total={100} />
+      <Datatable />
     </div>
   );
 };
